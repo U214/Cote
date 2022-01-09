@@ -9,7 +9,7 @@ int main() {
     cin >> n;
 
     int arr[n];
-    vector<int> temp(1000001);
+    vector<bool> temp(2000000);
     int el;
     for (int i=0; i<n; i++) {
         cin >> el;
@@ -20,15 +20,11 @@ int main() {
     int count = 0;
     for (int i=0; i<n; i++) {
         int index = x - arr[i];
-        if (index < 0) {
-            continue;
-        }
-
-        if (temp[index]) {
+        if (index > 0 && temp[index]) {
             count++;
         }
 
-        temp[index]++;
+        temp[arr[i]] = true;
     }
 
     cout << count;
